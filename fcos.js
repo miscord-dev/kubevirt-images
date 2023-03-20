@@ -7,8 +7,7 @@
 
     const pwd = (await $`pwd`).stdout
 
-    await $`docker run --platform=linux/amd64 --security-opt label=disable --pull=always --rm -v ${pwd}:/data -w /data
-        quay.io/coreos/coreos-installer:release download -f iso`
+    await $`docker run --platform=linux/amd64 --security-opt label=disable --pull=always --rm -v ${pwd}:/data -w /data quay.io/coreos/coreos-installer:release download -f iso`
     
     await $`mv *.iso image.img`
 
