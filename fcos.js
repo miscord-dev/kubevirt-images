@@ -1,7 +1,7 @@
 #! /bin/zx
 
 (async () => {
-    await $`docker build -t fcos -f ../fcos.Dockerfile .`
+    await $`docker build -t fcos -f fcos.Dockerfile .`
 
     await Promise.all(
         process.env.TAGS.split('\n').filter(x => x.length)
