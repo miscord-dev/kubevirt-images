@@ -9,6 +9,8 @@
 
     await $`docker run --platform=linux/amd64 --security-opt label=disable --pull=always --rm -v ${pwd}:/data -w /data quay.io/coreos/coreos-installer:release download -f iso`
     
+    await $`ls`
+
     await $`bash -c "mv *.iso image.img"`
 
     await $`docker build -t fcos -f ../Dockerfile .`
