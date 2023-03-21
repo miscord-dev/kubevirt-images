@@ -1,14 +1,15 @@
-FROM quay.io/coreos/coreos-installer:release AS installer
+# FROM quay.io/coreos/coreos-installer:release AS installer
 
-WORKDIR /workspace
+# WORKDIR /workspace
 
-RUN /usr/sbin/coreos-installer download -f qcow2.xz -p qemu
+# RUN /usr/sbin/coreos-installer download -f qcow2.xz -p qemu
 
 FROM ubuntu:22.04 AS uncompressor
 
 WORKDIR /workspace
 
-COPY --from=installer /workspace/*.qcow2.xz /workspace
+RUN curl -LO https://builds.coreos.fedoraproject.org/prod/streams/stable/builds/37.20230218.3.0/x86_64/fedora-coreos-37.20230218.3.0-qemu.x86_64.qcow2.xz
+# COPY --from=installer /workspace/*.qcow2.xz /workspace
 
 RUN apt-get update && \
     apt-get install -y xz-utils && \
