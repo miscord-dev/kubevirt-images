@@ -10,7 +10,7 @@ WORKDIR /workspace
 
 RUN apt-get update && \
     apt-get install -y xz-utils && \
-    apt-get install -y --no-isntall-recommends curl && \
+    apt-get install -y --no-install-recommends curl && \
     curl -LO https://builds.coreos.fedoraproject.org/prod/streams/stable/builds/37.20230218.3.0/x86_64/fedora-coreos-37.20230218.3.0-qemu.x86_64.qcow2.xz
 # COPY --from=installer /workspace/*.qcow2.xz /workspace
 
