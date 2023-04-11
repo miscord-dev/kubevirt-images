@@ -9,7 +9,7 @@ jobs:
   docker:
     strategy:
       matrix:
-        os: [fcos, ubuntu]
+        os: [fcos, ubuntu, ubuntu-kubeadm-22.04]
     runs-on: ubuntu-latest
     steps:
       -
