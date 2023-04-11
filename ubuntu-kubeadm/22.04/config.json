@@ -5,7 +5,7 @@
             "disk_discard": "unmap",
             "disk_image": true,
             "disk_interface": "virtio-scsi",
-            "disk_size": "5120M",
+            "disk_size": "51200M",
             "headless": true,
             "http_directory": "./cloud-data",
             "iso_checksum": "file:https://cloud-images.ubuntu.com/jammy/current/SHA256SUMS",
