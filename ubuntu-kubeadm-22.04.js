@@ -1,6 +1,6 @@
 #! /bin/zx
 
-import path from "path";
+const path = require("path");
 
 (async () => {
     const c = `ubuntu-kubeadm/22.04`;
