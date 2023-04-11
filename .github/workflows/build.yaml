@@ -5,16 +5,16 @@ on:
     branches: [main]
   pull_request:
 
-permissions:
-  packages: write
-  contents: read
-
 jobs:
   docker:
     strategy:
       matrix:
         os: [fcos, ubuntu]
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+
     steps:
       -
         name: Checkout
