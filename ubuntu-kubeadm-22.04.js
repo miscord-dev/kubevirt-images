@@ -14,7 +14,7 @@ const path = require("path");
     await Promise.all(
         process.env.TAGS.split('\n').filter(x => x.length)
             .map(async (tag) => {
-                await $`docker tag ubuntu ${tag}`
+                await $`docker tag ubuntu-kubeadm ${tag}`
                 await $`docker push ${tag}`
             })
         )
