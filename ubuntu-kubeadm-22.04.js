@@ -3,7 +3,7 @@
 const path = require("path");
 
 (async () => {
-    const c = `ubuntu-kubeadm/22.04`;
+    const c = `ubuntu-kubeadm/22.04/config.json`;
 
     const dir = (await $`dirname ${c}`).stdout.trim();
     cd(dir);
