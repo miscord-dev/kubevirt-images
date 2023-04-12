@@ -3,13 +3,13 @@
 const path = require("path");
 
 (async () => {
-    const c = `ubuntu-kubeadm/22.04/config.json`;
+    const c = `ubuntu-kubeadm/22.04/config.pkr.hcl`;
 
     const dir = (await $`dirname ${c}`).stdout.trim();
     cd(dir);
-    await $`packer build ${path.relative(dir, c)}`;
+    await $`packer build ${path.relative(dir, c)} -var k8s-version=${process.env.K8S_VERSION}`;
 
-    await $`docker build -t ubuntu-kubeadm -f Dockerfile .`
+    await $`docker build -t ubuntu-kubeadm -f Dockerfile . -var`
 
     if (!!process.env.IS_PULL_REQUEST) {
         return;

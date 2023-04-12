@@ -4,6 +4,8 @@ set -eu
 
 export DEBIAN_FRONTEND=noninteractive
 
+k8s_version=$1
+
 cat << EOF > /etc/modules-load.d/k8s.conf
 overlay
 br_netfilter
@@ -50,7 +52,7 @@ echo \
 
 
 sudo apt-get update
-sudo apt-get install -yq kubelet kubeadm kubectl containerd.io
+sudo apt-get install -yq "kubelet=$k8s_version" "kubeadm=$k8s_version" "kubectl=$k8s_version" containerd.io
 sudo apt-mark hold kubelet kubeadm kubectl containerd.io
 
 mkdir -p /etc/containerd
