@@ -16,7 +16,6 @@ source "qemu" "ubuntu" {
   ]
   ssh_password = "ubuntupassword"
   ssh_username = "ubuntu"
-  type = "qemu"
 }
 
 build {
