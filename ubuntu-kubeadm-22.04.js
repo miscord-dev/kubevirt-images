@@ -8,9 +8,6 @@ const path = require("path");
     cd(dir);
     await $`packer build -var k8s-version=${process.env.K8S_VERSION} .`;
 
-    await $`ls output-ubuntu`
-    await $`ls output-*`
-
     await $`docker build -t ubuntu-kubeadm -f Dockerfile .`
 
     if (!!process.env.IS_PULL_REQUEST) {
