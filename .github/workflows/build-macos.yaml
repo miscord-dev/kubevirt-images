@@ -61,5 +61,6 @@ jobs:
         env:
           FORCE_COLOR: 3
           TAGS: ${{ steps.meta.outputs.tags }}
+          IS_PULL_REQUEST: ${{ github.event_name == 'pull_request' }}
         run: |
           npx zx ${{ matrix.os }}.js
