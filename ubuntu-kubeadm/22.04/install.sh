@@ -25,7 +25,7 @@ fs.inotify.max_user_watches=16184
 EOF
 
 mkdir -p /etc/systemd/system.conf.d
-cat << EOF /etc/systemd/system.conf.d/accounting.conf
+cat << EOF > /etc/systemd/system.conf.d/accounting.conf
 [Manager]
 DefaultCPUAccounting=yes
 DefaultMemoryAccounting=yes
