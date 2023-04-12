@@ -32,25 +32,6 @@ DefaultMemoryAccounting=yes
 DefaultBlockIOAccounting=yes
 EOF
 
-mkdir -p /etc/containerd
-cat << EOF > /etc/containerd/config.toml
-version = 2
-root = "/var/lib/containerd"
-state = "/run/containerd"
-subreaper = true
-oom_score = -999
-[grpc]
-address = "/run/containerd/containerd.sock"
-uid = 0
-gid = 0
-[plugins."io.containerd.grpc.v1.cri"]
-enable_selinux = true
-[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
-runtime_type = "io.containerd.runc.v2"
-[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
-SystemdCgroup = true
-EOF
-
 sudo apt-get update
 sudo apt-get install -yq apt-transport-https ca-certificates curl gnupg
 
@@ -71,3 +52,22 @@ echo \
 sudo apt-get update
 sudo apt-get install -yq kubelet kubeadm kubectl containerd.io
 sudo apt-mark hold kubelet kubeadm kubectl containerd.io
+
+mkdir -p /etc/containerd
+cat << EOF > /etc/containerd/config.toml
+version = 2
+root = "/var/lib/containerd"
+state = "/run/containerd"
+subreaper = true
+oom_score = -999
+[grpc]
+address = "/run/containerd/containerd.sock"
+uid = 0
+gid = 0
+[plugins."io.containerd.grpc.v1.cri"]
+enable_selinux = true
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+runtime_type = "io.containerd.runc.v2"
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+SystemdCgroup = true
+EOF
