@@ -1,5 +1,9 @@
 #! /bin/bash
 
+set -eu
+
+export DEBIAN_FRONTEND=noninteractive
+
 cat << EOF > /etc/modules-load.d/k8s.conf
 overlay
 br_netfilter
@@ -48,7 +52,7 @@ SystemdCgroup = true
 EOF
 
 sudo apt-get update
-sudo apt-get install -y apt-transport-https ca-certificates curl gnupg
+sudo apt-get install -yq apt-transport-https ca-certificates curl gnupg
 
 sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
 
@@ -65,9 +69,5 @@ echo \
 
 
 sudo apt-get update
-sudo apt-get install -y kubelet kubeadm kubectl
-sudo apt-mark hold kubelet kubeadm kubectl
-
-sudo apt-get update
-
-sudo apt-get install containerd.io
+sudo apt-get install -yq kubelet kubeadm kubectl containerd.io
+sudo apt-mark hold kubelet kubeadm kubectl containerd.io
