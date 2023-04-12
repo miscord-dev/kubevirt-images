@@ -1,7 +1,3 @@
-variable "k8s-version" {
-  type = string
-}
-
 source "qemu" "ubuntu" {
   accelerator = "hvf"
   disk_discard = "unmap"
