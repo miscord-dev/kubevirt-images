@@ -3,7 +3,7 @@
 (async () => {
     await $`docker build -t ubuntu -f ubuntu.Dockerfile .`
 
-    if (!!process.env.IS_PULL_REQUEST) {
+    if (JSON.parse(process.env.IS_PULL_REQUEST)) {
         return;
     }
 

@@ -10,7 +10,7 @@ const path = require("path");
 
     await $`docker build -t ubuntu-kubeadm -f Dockerfile .`
 
-    if (!!process.env.IS_PULL_REQUEST) {
+    if (JSON.parse(process.env.IS_PULL_REQUEST)) {
         return;
     }
 
