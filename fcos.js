@@ -3,7 +3,7 @@
 (async () => {
     await $`docker build -t fcos -f fcos.Dockerfile .`
 
-    if (!!process.env.IS_PULL_REQUEST) {
+    if (JSON.parse(process.env.IS_PULL_REQUEST)) {
         return;
     }
 
