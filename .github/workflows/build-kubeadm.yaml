@@ -10,6 +10,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-kubeadm-22.04]
+        kubernetes: [1.27.0-00, 1.26.3-00, 1.25.8-00]
     runs-on: macos-latest
     permissions:
       packages: write
@@ -50,7 +51,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ghcr.io/${{ github.repository_owner }}/kubevirt-${{ matrix.os }}
+          images: ghcr.io/${{ github.repository_owner }}/kubevirt-${{ matrix.os }}-${{ matrix.k8s-version }}
           tags: |
             type=schedule
             type=ref,event=branch
@@ -61,5 +62,7 @@ jobs:
         env:
           FORCE_COLOR: 3
           TAGS: ${{ steps.meta.outputs.tags }}
+          IS_PULL_REQUEST: ${{ github.event_name == 'pull_request' }}
+          K8S_VERSION: ${{ matrix.kubernetes }}
         run: |
           npx zx ${{ matrix.os }}.js
