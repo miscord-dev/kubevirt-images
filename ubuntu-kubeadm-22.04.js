@@ -10,6 +10,8 @@ const path = require("path");
 
     await $`docker build -t ubuntu-kubeadm -f Dockerfile .`
 
+    console.log(process.env.IS_PULL_REQUEST)
+
     if (!!process.env.IS_PULL_REQUEST) {
         return;
     }
