@@ -51,7 +51,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ghcr.io/${{ github.repository_owner }}/kubevirt-${{ matrix.os }}-${{ matrix.k8s-version }}
+          images: ghcr.io/${{ github.repository_owner }}/kubevirt-${{ matrix.os }}-${{ matrix.kubernetes }}
           tags: |
             type=schedule
             type=ref,event=branch
