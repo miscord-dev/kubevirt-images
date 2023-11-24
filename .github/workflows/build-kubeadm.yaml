@@ -29,7 +29,7 @@ jobs:
           npm i -g zx
 
       - name: Use latest Packer
-        uses: hashicorp-contrib/setup-packer@v2
+        uses: hashicorp-contrib/setup-packer@v3
       - name: Set up QEMU
         run: |
           brew install qemu
